@@ -1,0 +1,80 @@
+.img_block{
+    
+    position: absolute;
+    right: -7%;
+    top: 23%;
+}
+.img_block>.ring {
+    width: 730px;
+    height: 730px;
+    border-radius: 50%;
+}
+
+.main_text{
+    position: absolute;
+    left: 10%;
+    top: 15%;
+    width: 40%;
+   
+}
+
+.tittle{
+    transition: all 1.3s ease-in-out 0s;
+}
+.text{
+    transition: all 1.7s ease-in-out 0s; 
+}
+.buttones{
+    transition: all 2s ease-in-out 0s; 
+}
+
+h1{
+    width: 100%;
+    font-size: 70px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    font-family: 'Libre Franklin';
+    line-height: 100px;
+    margin: 0;
+}
+
+
+.text{
+    width: 80%;
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.762);
+    line-height: 30px;
+    font-family:Arial, Helvetica, sans-serif
+}
+.buttones{
+    margin-top: 30px;
+    width: calc(70% - 5%);
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.buttones>button{
+    text-transform: uppercase;
+    width: 170px;
+    height: 40px;
+    transition: all 0.3s ease-in-out 0s;
+}
+.Oreder{
+    background-color: #2b391f;
+    color: antiquewhite;
+}
+.Oreder:hover{
+    background-color: #2b391f00;
+    color: #2b391f;
+}
+.Consultation{
+    background-color: #d5ba8f;
+    color: #2b391f;
+}
+.Consultation:hover{
+    background-color: #d5ba8f00;
+    color: #2b391f;
+}
