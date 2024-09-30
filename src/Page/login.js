@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './login.css'
+import Profile from './profile'
 
 function Login({
   setOpenMain,
@@ -8,7 +9,11 @@ function Login({
   setLogedIn, 
   dateUsers, 
   LogedIn, 
-  signUp 
+  signUp ,
+  name,
+  password,
+  setName,
+  setPassword
 }) {
 
 
@@ -21,8 +26,7 @@ const [inputIssue, setInputIssue] = useState({
 })
 
 
-const [name, setName] = useState('')
-const[password, setPassword] = useState('')
+
 const check = dateUsers.find(dateUser => dateUser.name === name && dateUser.password === password)
 const checkName = dateUsers.find(dateUser => dateUser.name === name)
 const checkPassword = dateUsers.find(dateUser => dateUser.password === password)

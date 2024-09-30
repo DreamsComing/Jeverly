@@ -1,0 +1,18 @@
+.Profile{
+    position: relative;
+    text-align: center;
+    width: 17%;
+    height: 350px;
+    background-color: rgba(207, 207, 207, 0.697);
+    box-shadow: 0 0 15px 10px white , inset 0 0 3px 1px white;
+}
+.Profile>img{
+    position: absolute;
+    top: -5%;
+}
+.Profile>h3{
+    position: absolute;
+    top: 1%;
+    left: 35%;
+    letter-spacing: 3px;
+}

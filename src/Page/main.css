@@ -1,3 +1,6 @@
+.wrapper_main{
+    transition: all 1.3s ease-in-out 0s;
+}
 .img_block{
     
     position: absolute;

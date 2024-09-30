@@ -1,3 +1,6 @@
+footer{
+    transition: all 1.3s ease-in-out 0s;
+}
 .footer_space{
     display: flex;
     position: absolute;

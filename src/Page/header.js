@@ -8,7 +8,7 @@ import searching from '../img/nav_img/serching.png'
 
 
 
-function Header({setLogedIn,setFooter,setOpenMain,open,setOpen}) {
+function Header({openProduct,setLogedIn,setFooter,setOpenMain,open,setOpen, setProduct,setMainWindow}) {
     const closeMain = () => {
         setLogedIn({
             visibility: 'visible',
@@ -30,28 +30,38 @@ function Header({setLogedIn,setFooter,setOpenMain,open,setOpen}) {
             opacity: 0,
             transform: `translatey(${-130}%)`
         })
+        setProduct({
+            visibility: 'hidden',
+            opacity: 0,
+            transform: `translateX(${130}%)`
+        })
+        setMainWindow({
+            visibility: 'visible',
+            opacity: 1,
+            transform: `translateX(${0}%)`
+        })
 
     }
+
   return (
     <header>
         <div className='logo'>
           <button onClick={() => closeMain()}>Shodwe</button>
         </div>
-        {open &&
-                <nav style={open} className='links'>
-                <a>Home</a>
-                <a>Product</a>
-                <a>About Us</a>
-                <a>Testmonial</a>
+            <nav style={open} className='links'>
+                <button>Home</button>
+                <button onClick={() => openProduct()}>Product</button>
+                <button>About Us</button>
+                <button>Testmonial</button>
             </nav>
-        }
+        
 
         <div  style={open} className='other'>
             <div className='wrapper'>
              <input className='searching'/>
             </div>
             <a><img src={busket}/></a>
-            <a><img src={login}/></a>
+            <button><img src={login}/></button>
         </div>
     </header>
   )

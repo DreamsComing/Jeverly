@@ -1,7 +1,7 @@
 import React from 'react'
 import './footer.css'
 
-function Footer({footer}) {
+function Footer({footer , mainWindow}) {
   return (
     <footer>
         <div style={footer} className='footer_space'>

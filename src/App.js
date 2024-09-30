@@ -1,8 +1,14 @@
-import { useState } from 'react';
+/* eslint-disable no-duplicate-case */
+/* eslint-disable default-case */
+/* eslint-disable no-const-assign */
+import { useState, useEffect, useReducer } from 'react';
 import './App.css';
 import Header from './Page/header';
 import Main from './Page/main';
 import Footer from './Page/footer';
+import Product from './Page/Product/Product';
+import { ProductList } from './Page/Product/Product';
+
 
 function App() {
   const [dateUsers, setDateUser] = useState([
@@ -50,6 +56,11 @@ function App() {
     opacity: 0,
     transform: `translateX(${-130}%)`
   })
+  const [mainWindow, setMainWindow] = useState({
+    visibility: 'visible',
+    opacity: 1,
+  })
+
   //
   // OpenFooter
   const [footer,setFooter] = useState({
@@ -72,16 +83,103 @@ function App() {
     transform: `scale(${1})`
   })
   //
+  // Open Profile
+  const [profile, setProfile] = useState({
+    visibility: 'hidden',
+    opacity: 0,
+    transform: `scale(${0})`
+  })
+  //
+  // Open Product
+  const [product, setProduct] = useState({
+    visibility: 'hidden',
+    opacity: 0,
+    transform: `translateX(${100}%)`
+  })
+  //
+
+const manageWindows = (state, action) => {
+  switch(action.type) {
+    case "buttoneStyle1" :
+      return{
+        visibility: 'hidden' ,
+        transform: `translate(${100}%, ${-100}%) scale(${0.1})`,
+        opacity : 0,
+        transition: `all ${0.7}s ease-in-out ${0}s`
+      }
+    case "buttoneStyle2" :
+      return{
+        visibility: 'hidden' ,
+        transform: `translate(${100}%, ${-100}%) scale(${0.1})`,
+        opacity : 0,
+        transition: `all ${0.7}s ease-in-out ${0}s`
+      }
+    case "buttoneStyle3" :
+      return{
+        visibility: 'hidden' ,
+        transform: `translate(${100}%, ${-100}%) scale(${0.1})`,
+        opacity : 0,
+        transition: `all ${0.7}s ease-in-out ${0}s`
+      }
+  default:
+      return state
+  }
+}
+const [state, dispatch] = useReducer(manageWindows, {
+  visibility: 'visible' ,
+  transform: `translate(${0}%, ${0}%) scale(${1})`,
+  opacity : 1,
+  transition: `all ${0.7}s ease-in-out ${0}s`
+})
+
+//view Product
+//
+
+//calculation
+  const [tottalPrice, setTottalPrice] = useState(0);
+  const [placeHolder, setPlaceHolder] = useState(false)
+
+  const calcPrice = (id) => {
+    setTottalPrice(tottalPrice + ProductList[id].cost)
+
+  
+  setPlaceHolder(true)
+}
+//
+
+  
+
+
+
+  const openProduct = () => { // close Main ---> open Product
+    setMainWindow({ 
+        visibility: 'hidden',
+        opacity: 0,
+        transform: `translateX(${-130}%)`
+    })
+    setProduct({
+      visibility: 'visible',
+      opacity: 1,
+      transform: `translateX(${0}%)`
+    })}
   return (
     <div className="App">
-      <Header  setLogedIn={setLogedIn} setFooter={setFooter} setOpenMain={setOpenMain} open={open} setOpen={setOpen} openMain={openMain}/>
+      <Header 
+        setLogedIn={setLogedIn} setFooter={setFooter} openProduct={openProduct} 
+        setOpenMain={setOpenMain} open={open} setOpen={setOpen} openMain={openMain}
+        setProduct={setProduct} setMainWindow={setMainWindow}
+      />
+      
       <Main
+        setProfile={setProfile} profile={profile} setProduct={setProduct}  mainWindow={mainWindow}
         setDateUser={setDateUser} dateUsers={dateUsers} setFooter={setFooter}
         LogedIn={LogedIn} setLogedIn={setLogedIn}  open={open} setOpen={setOpen}
         openMain={openMain} setOpenMain={setOpenMain}  setOpenSignUp={setOpenSignUp} openSignUp={openSignUp}/>
-      <Footer footer={footer} />
+
+      <Product product={product} calcPrice={calcPrice} state={state} dispatch={dispatch} placeHolder={placeHolder}/>
+
+      <Footer footer={footer} mainWindow={mainWindow}/>
     </div>
   );
 }
-
 export default App;

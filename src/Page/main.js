@@ -3,9 +3,18 @@ import './main.css'
 import Login from './login'
 import ring from '../img/Main_img/ring.png'
 import SignUp from './SignUp'
+import Profile from './profile'
 
 
-function Main({setOpenSignUp,openSignUp,setDateUser,dateUsers,setFooter, setOpen, openMain, LogedIn,setLogedIn, setOpenMain}) {
+
+function Main({
+    setOpenSignUp ,openSignUp ,setDateUser,
+    dateUsers ,setFooter, setOpen, openMain, LogedIn, setLogedIn, 
+    setOpenMain, profile, setProfile, mainWindow
+
+}) {
+    const [name, setName] = useState('')
+    const[password, setPassword] = useState('')
     const signUp = () => {
         setOpenSignUp({
             visibility: 'visible',
@@ -18,16 +27,15 @@ function Main({setOpenSignUp,openSignUp,setDateUser,dateUsers,setFooter, setOpen
             transform: `scale(${0})`
         })
     }
-   
 
   return (
     <main>
         <div className='login'>
-            <SignUp setLogedIn={setLogedIn} setCloseSignUp={setOpenSignUp} closeSignUp={openSignUp} setDateUser={setDateUser}/>
-            <Login setOpenMain={setOpenMain} setFooter={setFooter} setOpen={setOpen} setLogedIn={setLogedIn} signUp={signUp} dateUsers={dateUsers} LogedIn={LogedIn}/>
+            <SignUp  setLogedIn={setLogedIn} setCloseSignUp={setOpenSignUp} closeSignUp={openSignUp} setDateUser={setDateUser}/>
+            <Login  name={name} password={password} setName={setName} setPassword={setPassword} setOpenMain={setOpenMain} setFooter={setFooter} setOpen={setOpen} setLogedIn={setLogedIn} signUp={signUp} dateUsers={dateUsers} LogedIn={LogedIn}/>
         </div>
-        <div className='wrapper_main'>
-
+        <div style={mainWindow} className='wrapper_main'>
+        <Profile profile={profile} setProfile={setProfile} dateUsers={dateUsers} name={name}/>
         <div className='main_text'>
             <div style={openMain} className='tittle'>
              <h1>Find Beauty Within Yourself</h1>
